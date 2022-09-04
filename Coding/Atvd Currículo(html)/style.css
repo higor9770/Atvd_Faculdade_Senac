@@ -1,0 +1,58 @@
+body{
+    background-color: rgba(150, 150, 150, 0.234);
+    color: rgb(0, 0, 0);
+    font-family:cursive;
+    text-align: left;
+    text-align: justify;
+    
+}
+
+#perfil{
+    max-width: 200px;
+    min-width: 100px;
+    width: auto;
+    border-radius: 7%;
+
+}
+
+.foto{
+
+    display: flex;
+    
+}
+
+.nomes{
+
+padding-left: 3%;
+}
+
+.conteúdo{
+    padding-top: 2%;
+  
+}
+
+.divisao{
+    width: 5px;    
+}
+
+#geral{
+     height: 100%;
+     width: 43%;
+     align-items: center;
+     padding-left: 28%;
+}
+
+.MudCor{
+    color:rgb(0, 0, 0);
+
+}
+
+.MudCor:hover{
+    color: rgb(19, 52, 236);
+}
+
+footer img{
+    
+    padding-left: 13%;
+
+}

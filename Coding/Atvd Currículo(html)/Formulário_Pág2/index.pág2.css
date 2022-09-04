@@ -1,0 +1,51 @@
+body{
+    background-color: rgba(150, 150, 150, 0.234);
+    color: rgb(0, 0, 0);
+    font-family:cursive;
+    text-align: left;
+    text-align: justify;
+    
+}
+
+.MudCor{
+    color:rgb(0, 0, 0);
+
+}
+
+.MudCor:hover{
+    color: rgb(19, 52, 236);
+}
+
+footer img{
+    
+    padding-left: 13%;
+
+}
+
+.formulário{
+  
+    padding-left: 33%;
+    text-align: justify;
+    padding-top: 3%;
+    
+}
+
+input#fname{
+    width: 50%;
+}
+input#lname{
+    width: 50%;
+}
+input#email{
+    width: 50%;
+}
+input#assunto{
+    width: 50%;
+}
+input#mensagem{
+    width: 50%;
+    height: 120px;
+}
+.op{
+    padding-top: 2%
+}
