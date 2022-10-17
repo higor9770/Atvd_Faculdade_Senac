@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition:2s;
+    text-transform: capitalize;
+    text-decoration: none;
+
+    
+    
+    
+ }
+
+
+.header{
+
+    padding: 1.5rem 7%; /* tamanho do header */
+    background-color: rgb(156, 101, 17); /* cor do header */
+    background: linear-gradient(72deg, #d6aa68 10%, #ffe4c4 100% ) ;
+    display: flex; /* O Flexbox é um conjunto de propriedades que tem por objetivo organizar itens dentro de um elemento pai, normalmente chamado de container. o Display felx permite que você arranje os elementos horizontal ou verticalmente, com ou sem espaços entre eles, de tamanhos iguais ou diferentes */
+    justify-content: space-between; /*  primeiro item é deslocado para o início do eixo principal, o último é deslocado para o final do eixo principal e os demais são distribuídos uniformemente entre eles */
+    align-items: center; /* alinhas os itens no centro */
+    position: flex;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar a{ /* tag para a letra do nav */
+
+    color:rgb(0, 0, 0); /* cor da letra */
+    font-size: 1.5rem; /* tamnho da letra */
+    margin-left: 1rem; /* distancia das palavras */
+
+}
+
+
+.navbar a:hover{ /* tag para mudar a cor das referências no nav */
+  
+    background-color: darkorange; /* cor das caixas de que estão no nav */
+    color: white; /* cor da letra que vai se transformar */
+    transition: 0.4s; /* duração do tempo de transformação */
+
+}
+
+.icons a{  /* tag para a box contato */
+
+    color:rgb(0, 0, 0); /* cor da letra */
+    background-color: darkorange;  /* cor da caixa */
+    padding: 1rem; /* tamanho da box */
+    font-size: 1,5rem; /* tamanho da letra */
+    border-radius: 20px; /* formato da box - quanto mais perto de 1 (retangulo) quanto mais longe de 1 (mais redondo fica) */
+
+}
+
+.icons a:hover{ /* tag para mudar a cor da box e letra (contato) no nav */
+
+    color:rgb(255, 255, 255); /* cor da letra que vai se transformar */
+    background-color: rgb(179, 18, 243); /* cor das caixas de que estão no nav (contato) */
+    padding: 1,5rem; 
+    font-size: 1,5rem;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+
+.color3{ /* tag para a cor da página a partir do nav, feito para ficar abaixo do nav */
+
+    background-color: #ffe4c4; /* cor de fundo */
+  
+  }
+
+
+.content{
+
+  height: 450px;
+  width: 850px;
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate( 31%, 20%);
+  overflow: hidden;
+  
+}
+
+.navigation{
+
+    
+   position: absolute;
+   bottom: 20px;
+   left: 50px;
+   transform: translate(-50%);
+   display: flex;
+   margin-left: 42%;
+   
+
+}
+
+.bar {
+
+  width: 70px;
+  height: 17px;
+  border: 2px solid rgb(0, 0, 0);
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  justify-content: space-between;
+}
+
+.bar:hover{
+
+    background-color: rgb(0, 0, 0);
+    transition: 0.4s;
+
+}
+
+input{
+
+  display: none;
+
+}
+
+
+.slides{
+
+   display: flex;
+   width: 600%;
+   height: 100%;
+
+}
+
+.slide{
+
+  width: 20%;
+  transition: 0.6s;
+
+}
+
+.slide img{
+
+  width: 100%;
+  height: 100%;
+
+
+}
+
+#slide:checked ~.S1{
+
+   margin-left: 0;
+
+}
+
+#slide2:checked ~.S1{
+
+    margin-left: -20%;
+
+}
+
+#slide3:checked ~.S1{
+
+    margin-left: -40%;
+ 
+ }
+
+ 
+ #slide4:checked ~.S1{
+
+    margin-left: -60%;
+ 
+ }
+
+ 
+ #slide5:checked ~.S1{
+
+    margin-left: -80%;
+ 
+ }
+
+ #slide6:checked ~.S1{
+
+    margin-left: -100%;
+ 
+ }
+ 
+
+ footer{
+    
+    padding: 15px 0;
+    background: linear-gradient(72deg, #d6aa68 10%, #ffe4c4 100% ) ;
+    
+ 
+}
+.container-footer{
+    max-width: 1400px;
+    padding: 0 4%;
+    margin: auto;
+    
+}
+.row-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.coluna h4{
+    font-size: 22px;
+    color:rgb(0, 0, 0);
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+    transition: 0.4s;
+    
+}
+.coluna ul{
+    list-style: none;
+}
+.coluna ul li{
+    margin: 8px 0;
+}
+.coluna ul li a{
+    font-size: 14px;
+    text-transform: capitalize;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    transition: all 0.3s ease;
+}
+.coluna ul li a:hover{
+    color: rgb(179, 18, 243);
+    transition: 0.4s;
+}
+
+.coluna h4:hover{
+    color: rgb(179, 18, 243);
+    transition: 0.4s;
+}
+
+
+.coluna .redes a{
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    border-radius: 50%;
+    color: rgb(24, 20, 20);
+    border: 1px solid rgb(12, 12, 12);
+    transition: all 0.5s ease;
+}
+
+.coluna .redes a i{
+    font-size: 20px;
+}
+
+.coluna .redes a:hover{
+    color: #000000;
+    background-color: white;
+}

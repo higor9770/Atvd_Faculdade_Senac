@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition:2s;
+    text-transform: capitalize;
+    text-decoration: none;
+    
+    
+ }
+
+.header{
+
+    padding: 1.5rem 7%; /* tamanho do header */
+    color: white;
+    background: linear-gradient(90deg, rgba(48,42,150,1) 0%, rgba(131,75,186,1) 17%, rgba(0,212,255,1) 100%);
+    display: flex; /* O Flexbox é um conjunto de propriedades que tem por objetivo organizar itens dentro de um elemento pai, normalmente chamado de container. o Display felx permite que você arranje os elementos horizontal ou verticalmente, com ou sem espaços entre eles, de tamanhos iguais ou diferentes */
+    justify-content: space-between; /*  primeiro item é deslocado para o início do eixo principal, o último é deslocado para o final do eixo principal e os demais são distribuídos uniformemente entre eles */
+    align-items: center; /* alinhas os itens no centro */
+    position: flex;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    
+}
+
+.navbar a{ /* tag para a letra do nav */
+
+   color: white;
+    font-size: 1.5rem; /* tamnho da letra */
+    margin-left: 1rem; /* distancia das palavras */
+
+}
+
+.navbar a:hover{ /* tag para mudar a cor das referências no nav */
+  
+    background-color: darkorange; /* cor das caixas de que estão no nav */
+    color: white; /* cor da letra que vai se transformar */
+    transition: 0.4s; /* duração do tempo de transformação */
+
+}
+
+.icons a{  /* tag para a box contato */
+
+    color:rgb(0, 0, 0); /* cor da letra */
+    background-color: darkorange;  /* cor da caixa */
+    padding: 1rem; /* tamanho da box */
+    font-size: 1,5rem; /* tamanho da letra */
+    border-radius: 20px; /* formato da box - quanto mais perto de 1 (retangulo) quanto mais longe de 1 (mais redondo fica) */
+
+}
+
+.icons a:hover{ /* tag para mudar a cor da box e letra (contato) no nav */
+
+    color:rgb(255, 255, 255); /* cor da letra que vai se transformar */
+    background-color: rgb(179, 18, 243); /* cor das caixas de que estão no nav (contato) */
+    padding: 1,5rem; 
+    font-size: 1,5rem;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+
+
+.color{
+
+   background-color:rgb(111, 151, 151);
+
+}
+
+
+footer{
+    background: linear-gradient(90deg, rgba(48,42,150,1) 0%, rgba(131,75,186,1) 17%, rgba(0,212,255,1) 100%);
+    padding: 15px 0;
+    color: white;
+    
+ 
+}
+.container-footer{
+    max-width: 1400px;
+    padding: 0 4%;
+    margin: auto;
+    
+}
+.row-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.coluna h4{
+    font-size: 22px;
+    color: bisque;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+    transition: 0.4s;
+    
+}
+.coluna ul{
+    list-style: none;
+}
+.coluna ul li{
+    margin: 8px 0;
+}
+.coluna ul li a{
+    font-size: 14px;
+    text-transform: capitalize;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    transition: all 0.3s ease;
+}
+.coluna ul li a:hover{
+    color: rgb(179, 18, 243);
+    transition: 0.4s;
+}
+
+.coluna h4:hover{
+    color: rgb(179, 18, 243);
+    transition: 0.4s;
+}
+
+
+.coluna .redes a{
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin: 0 10px 10px 0;
+
+}
+
+.coluna .redes a i{
+    font-size: 20px;
+}
+
+.coluna .redes a:hover{
+    color: #000000;
+    background-color: white;
+}
+
+
+.imagemp{
+
+  display: flex;
+  align-items: center;
+
+
+}
+
+.imagemp p{
+    padding-left: 2%;
+}
+
+.preco{
+
+   padding-left: 35%;
+   padding-top: 10%;
+   padding-bottom: 10%;
+
+}

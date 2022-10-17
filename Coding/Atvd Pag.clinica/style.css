@@ -1,0 +1,308 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition:2s;
+    text-transform: capitalize;
+    text-decoration: none;
+    
+    
+ }
+
+.header{
+
+    padding: 1.5rem 7%; /* tamanho do header */
+    background-color: rgb(214, 170, 104); /* cor do header */
+    display: flex; /* O Flexbox é um conjunto de propriedades que tem por objetivo organizar itens dentro de um elemento pai, normalmente chamado de container. o Display felx permite que você arranje os elementos horizontal ou verticalmente, com ou sem espaços entre eles, de tamanhos iguais ou diferentes */
+    justify-content: space-between; /*  primeiro item é deslocado para o início do eixo principal, o último é deslocado para o final do eixo principal e os demais são distribuídos uniformemente entre eles */
+    align-items: center; /* alinhas os itens no centro */
+    position: flex;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar a{ /* tag para a letra do nav */
+
+    color:rgb(0, 0, 0); /* cor da letra */
+    font-size: 1.5rem; /* tamnho da letra */
+    margin-left: 1rem; /* distancia das palavras */
+
+}
+
+
+.navbar a:hover{ /* tag para mudar a cor das referências no nav */
+  
+    background-color: darkorange; /* cor das caixas de que estão no nav */
+    color: white; /* cor da letra que vai se transformar */
+    transition: 0.4s; /* duração do tempo de transformação */
+
+}
+
+.icons a{  /* tag para a box contato */
+
+    color:rgb(0, 0, 0); /* cor da letra */
+    background-color: darkorange;  /* cor da caixa */
+    padding: 1rem; /* tamanho da box */
+    font-size: 1,5rem; /* tamanho da letra */
+    border-radius: 20px; /* formato da box - quanto mais perto de 1 (retangulo) quanto mais longe de 1 (mais redondo fica) */
+
+}
+
+.icons a:hover{ /* tag para mudar a cor da box e letra (contato) no nav */
+
+    color:rgb(255, 255, 255); /* cor da letra que vai se transformar */
+    background-color: rgb(179, 18, 243); /* cor das caixas de que estão no nav (contato) */
+    padding: 1,5rem; 
+    font-size: 1,5rem;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+
+.color{ /* tag para a cor da página a partir do nav, feito para ficar abaixo do nav */
+
+    background-color: bisque; /* cor de fundo */
+  
+  }
+
+.conteúdo{ /* todo o primeiro conteúdo escrito */
+    
+    position:relative; /* posição do texto na tela */
+    padding-top: 10%;  /* aumentar a distância pra baixo empurrando algo "vazio" pra cima */
+    left: 7%;  
+    width: 50%;
+
+}
+
+.conteúdo h1{ /* conteúdo inserido na tag conteúdo H1 */
+
+    color: rgb(0, 0, 0);  /* cor da letra */
+    font-size: 40px;  /* tamanho da fonte */
+    padding-bottom: 30px; /* empurra um espaço vazio para baixo */
+}
+
+.conteúdo P{ /* conteúdo inserido na tag conteúdo P*/
+
+    font-size: 1.5rem; /* tamanho da fonte */
+    padding-bottom: 45px; /* empurra um espaço vazio para baixo */
+    text-align: justify; /* alinha o texto */
+
+}
+
+.conteúdo a{ /* conteúdo para modificar a box do read more*/
+
+    background-color: darkorange; /* cor da box do Read more */
+    border-radius: 15px;  /* formato da box - quanto mais perto de 1 (retangulo) quanto mais longe de 1 (mais redondo fica) */
+    color:black; /* cor da letra */
+    padding: 0.5rem; /* tamanho */
+    font-size: 1.2rem; /* tamanho da letra */
+    
+}
+
+.conteúdo a:hover{  /* contéudo para modificar a cor e a letra da box  */
+
+    background-color: rgb(179, 18, 243); /* cor que vai mudar dentro da box */
+    transition: 0.4s; /* duração da transição  */
+    color:white /* cor da letra que vai mudar dentro da box */
+
+}
+
+.img1{
+
+    padding-left: 40%;   /* empurra um espaço vazio para esquerda */
+    padding-bottom: 5%; /* empurra um espaço vazio para baixo */
+
+}
+
+.about{
+     text-align: end; /* alinhar o texto no lado direito da página */
+     margin-right: 4rem; /* empurra um espaço vazio para o lado direito */
+  }
+
+.about p{
+    font-size: 1.5rem; /* tamanho da fonte */
+    text-align: end; /* alinhar o texto no lado direito da página */
+    text-align: justify; /* alinha o texto */
+    padding-left: 20%; /* empurra um espaço vazio para esquerda */
+    padding-bottom: 4%; /* empurra um espaço vazio para baixo */
+    padding-top: 3%;
+  }
+
+.about a{ /* conteúdo para modificar a box do read more*/
+
+    background-color: darkorange; /* cor da box do Read more */
+    border-radius: 15px;  /* formato da box - quanto mais perto de 1 (retangulo) quanto mais longe de 1 (mais redondo fica) */
+    color:black; /* cor da letra */
+    padding: 0.5rem; /* tamanho */
+    font-size: 1.2rem; /* tamanho da letra */
+}
+
+.about a:hover{  /* contéudo para modificar a cor e a letra da box  */
+
+    background-color: rgb(179, 18, 243); /* cor que vai mudar dentro da box */
+    transition: 0.4s; /* duração da transição  */
+    color:white /* cor da letra que vai mudar dentro da box */
+
+}
+
+.img2{
+
+  padding-left: 8%;
+  padding-top: 5%;
+
+}
+
+.OurServices{
+    text-align: end; /* alinhar o texto no lado direito da página */
+    margin-right: 4rem; /* empurra um espaço vazio para o lado direito */
+ }
+
+.OurServices p{
+   font-size: 1.5rem; /* tamanho da fonte */
+   text-align: end; /* alinhar o texto no lado direito da página */
+   text-align: justify; /* alinha o texto */
+   padding-left: 20%; /* empurra um espaço vazio para esquerda */
+   padding-bottom: 4%; /* empurra um espaço vazio para baixo */
+   padding-top: 1.5%;
+ }
+
+.OurServices a{ /* conteúdo para modificar a box do read more*/
+
+   background-color: darkorange; /* cor da box do Read more */
+   border-radius: 15px;  /* formato da box - quanto mais perto de 1 (retangulo) quanto mais longe de 1 (mais redondo fica) */
+   color:black; /* cor da letra */
+   padding: 0.5rem; /* tamanho */
+   font-size: 1.2rem; /* tamanho da letra */
+   
+}
+
+.OurServices a:hover{  /* contéudo para modificar a cor e a letra da box  */
+
+   background-color: rgb(179, 18, 243); /* cor que vai mudar dentro da box */
+   transition: 0.4s; /* duração da transição  */
+   color:white /* cor da letra que vai mudar dentro da box */
+
+}
+
+
+.img3{
+
+padding: 3%;
+
+}
+
+
+footer{
+    background-color: rgb(214, 170, 104);
+    padding: 15px 0;
+    
+ 
+}
+.container-footer{
+    max-width: 1400px;
+    padding: 0 4%;
+    margin: auto;
+    
+}
+.row-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.coluna h4{
+    font-size: 22px;
+    color:rgb(0, 0, 0);
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+    transition: 0.4s;
+    
+}
+.coluna ul{
+    list-style: none;
+}
+.coluna ul li{
+    margin: 8px 0;
+}
+.coluna ul li a{
+    font-size: 14px;
+    text-transform: capitalize;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    transition: all 0.3s ease;
+}
+.coluna ul li a:hover{
+    color: rgb(179, 18, 243);
+    transition: 0.4s;
+}
+
+.coluna h4:hover{
+    color: rgb(179, 18, 243);
+    transition: 0.4s;
+}
+
+
+.coluna .redes a{
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    border-radius: 50%;
+    color: rgb(24, 20, 20);
+    border: 1px solid rgb(12, 12, 12);
+    transition: all 0.5s ease;
+}
+
+.coluna .redes a i{
+    font-size: 20px;
+}
+
+.coluna .redes a:hover{
+    color: #000000;
+    background-color: white;
+}
+
+
+.color2{ /* tag para a cor da página a partir do nav, feito para ficar abaixo do nav */
+
+    background-color: bisque; /* cor de fundo */
+
+}
+
+#footer2{
+
+    align-items: flex-end;
+    width: 100%;
+
+}
+
+.about2{ /* todo o primeiro conteúdo escrito */
+    
+    position:relative; /* posição do texto na tela */
+    padding-top: 10%;  /* aumentar a distância pra baixo empurrando algo "vazio" pra cima */
+    left: 7%;  
+    width: 50%;
+
+}
+
+.about2 h1{ /* conteúdo inserido na tag conteúdo H1 */
+
+    color: rgb(0, 0, 0);  /* cor da letra */
+    font-size: 40px;  /* tamanho da fonte */
+    padding-bottom: 30px; /* empurra um espaço vazio para baixo */
+}
+
+.about2 P{ /* conteúdo inserido na tag conteúdo P*/
+
+    font-size: 1.5rem; /* tamanho da fonte */
+    padding-bottom: 45px; /* empurra um espaço vazio para baixo */
+    text-align: justify; /* alinha o texto */
+
+}
