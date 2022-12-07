@@ -31,7 +31,7 @@ class senac: # criação de classe
 
     def read(self):
         print("Escolha uma das opções para visualizar")
-        print("\n1 - Funcionários\n 2 - Aluno\n 3 - Curso\n 4 - Disciplina")
+        print("\n 1 - Funcionários\n 2 - Aluno\n 3 - Curso\n 4 - Disciplina")
         escolha2 = int(input("Escolha: ")) # escolha2 para dar acesso as condiçoes 
         
         if escolha2 == 1:
@@ -79,7 +79,7 @@ class senac: # criação de classe
                 pass # entra em tec administrativo
             else:
                 print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
-                self.read()          # e vai para o inicio da função read
+                self.registrar()          # e vai para o inicio da função read
         elif escolha2 == 2:
             pass
             # Aluno
@@ -117,7 +117,7 @@ class senac: # criação de classe
                 pass # entra em tec administrativo
             else:
                 print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
-                self.read()          # e vai para o inicio da função read
+                self.deletar()          # e vai para o inicio da função read
         elif escolha2 == 2:
             pass
             # Aluno
@@ -150,7 +150,7 @@ class senac: # criação de classe
                 pass # entra em tec administrativo
             else:
                 print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
-                self.read()          # e vai para o inicio da função read
+                self.alterar()          # e vai para o inicio da função read
         elif escolha2 == 2:
             pass
             # Aluno
