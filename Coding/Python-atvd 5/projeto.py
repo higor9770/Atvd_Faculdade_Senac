@@ -1,6 +1,7 @@
 class senac:
 
     def __init__(self):
+        print("olá")
         print("Escolha uma das opções para acessá-la.")
         print("1 - Mostrar\n2 - Cadastrar\n3 - Alterar\n4 - Deletar")
         escolha = int(input("Escolha: "))
