@@ -62,7 +62,7 @@ class senac: # criação de classe
         elif escolha2 != 1 or escolha2 != 2 or escolha2 != 3 or escolha2 != 4: # define que se tiver um numero diferente desses
             print("\nNúmero errado! Digite um número dentro da escolha.\n")    # ele vai ser reenviado para o inicio da função read
             self.read() 
-            
+
         else: 
             print("erro!")
 
@@ -336,9 +336,37 @@ class senac: # criação de classe
                 pass # entra em tec administrativo
             else:
                 print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
-                self.alterar()          # e vai para o inicio da função read
+                self.alterar()       # e vai para o inicio da função read
+
         elif escolha2 == 2:
-            pass
+            print("Aqui vamos alterar um dado do aluno:")
+            print("O que você deseja alterar?\n 1 - Nome\n 2 - Matrícula")
+            escolha3 = int(input("escolha: "))
+            if escolha3 == 1:
+                # altera o nome do aluno
+                self.nome = input("novo nome: ")
+                self.CPF = int(input("confirme seu CPF: "))
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"update aluno " 
+                sql += f"set nome ='{self.nome}' where CPF='{self.CPF}'"
+                c.executarDML(sql)
+
+            elif escolha3 == 2:
+                # altera a matricula do aluno
+                self.nome = input("nova matricula: ")
+                self.CPF = int(input("confime seu CPF: "))
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"update aluno " 
+                sql += f"set matricula ='{self.nome}' where CPF='{self.CPF}'"
+                c.executarDML(sql)
+
+            elif escolha2 != 1 or escolha2 != 2: # define que se tiver um numero diferente desses ele vai ser reenviado para o inicio da função read
+                print("\nNúmero errado! Digite um número dentro da escolha.\n") 
+                self.read() 
+                
+            else:
+                print("erro!")
+
             # Aluno
         elif escolha2 == 3:
             pass
