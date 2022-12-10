@@ -1,4 +1,6 @@
 from conexaoBD import ConexaoDB 
+from tkinter import messagebox
+
 
 class senac: # criação de classe 
 
@@ -21,7 +23,7 @@ class senac: # criação de classe
 
         elif escolha1 == 4:
             self.alterar()
-            # alterar as informações 
+            # alterar as informações
 
         elif escolha1 != 1 or escolha1 != 2 or escolha1 != 3 or escolha1 != 4:
             print("\nNúmero errado! Digite um número dentro da escolha.\n")
@@ -30,6 +32,7 @@ class senac: # criação de classe
             
         else:
             print("\nerro!")
+
 
     def read(self):
         print("Escolha uma das opções para visualizar")
@@ -350,6 +353,18 @@ class senac: # criação de classe
                 sql = f"update aluno " 
                 sql += f"set nome ='{self.nome}' where CPF='{self.CPF}'"
                 c.executarDML(sql)
+                try:
+                    c = ConexaoDB()
+                    print('Dados alterados com sucesso!')
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+                    
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1- Alterar\n 2- finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                else:
+                    self.finalizar() # ir para a função de finalizar
 
             elif escolha3 == 2:
                 # altera a matricula do aluno
@@ -359,20 +374,125 @@ class senac: # criação de classe
                 sql = f"update aluno " 
                 sql += f"set matricula ='{self.nome}' where CPF='{self.CPF}'"
                 c.executarDML(sql)
+                try:
+                    c = ConexaoDB()
+                    print('Dados alterados com sucesso!')
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+                    
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1- Alterar\n 2- finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                else:
+                    self.finalizar() # ir para a função de finalizar
 
-            elif escolha2 != 1 or escolha2 != 2: # define que se tiver um numero diferente desses ele vai ser reenviado para o inicio da função read
+            elif escolha3 != 1 or escolha3 != 2: # define que se tiver um numero diferente desses ele vai ser reenviado para o inicio da função read
                 print("\nNúmero errado! Digite um número dentro da escolha.\n") 
-                self.read() 
+                self.alterar() 
                 
             else:
                 print("erro!")
 
             # Aluno
         elif escolha2 == 3:
-            pass
+            print("Aqui vamos alterar um dado de curso:")
+            print("O que você deseja alterar?\n 1 - Nome do curso\n 2 - duração do curso")
+            escolha3 = int(input("escolha: "))
+            if escolha3 == 1:
+                # altera o nome do curso
+                self.nomeCurso = input("Novo nome: ")
+                self.id_curso = int(input("confirme o id do curso: "))
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"update curso " 
+                sql += f"set nomeCurso ='{self.nomeCurso}' where id_curso='{self.id_curso}'"
+                c.executarDML(sql)
+                try:
+                    c = ConexaoDB()
+                    print('Dados alterados com sucesso!')
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+                    
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1- Alterar\n 2- finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                else:
+                    self.finalizar() # ir para a função de finalizar
+
+            elif escolha3 == 2:
+                # altera a duração do curso
+                self.duracao = input("Nova duração do curso: ")
+                self.id_curso = int(input("Confime o id do curso: "))
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"update curso " 
+                sql += f"set duracao ='{self.duracao}' where id_curso='{self.id_curso}'"
+                c.executarDML(sql)
+                try:
+                    c = ConexaoDB()
+                    print('Dados alterados com sucesso!')
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+                    
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1- Alterar\n 2- finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                else:
+                    self.finalizar() # ir para a função de finalizar
+
+            elif escolha3 != 1 or escolha3 != 2: # define que se tiver um numero diferente desses ele vai ser reenviado para o inicio da função read
+                print("\nNúmero errado! Digite um número dentro da escolha.\n") 
+                self.alterar() 
+                
+            else:
+                print("erro!")
             # Curso 
         elif escolha2 == 4:
-            pass
+            print("Aqui vamos alterar um dado de disciplina:")
+            print("O que você deseja alterar?\n 1 - Nome da disciplina\n 2 - carga horária")
+            escolha3 = int(input("escolha: "))
+            if escolha3 == 1:
+                # altera o nome do aluno
+                self.nomeDisciplina = input("Novo nome da disciplina: ")
+                self.id_disciplina = int(input("confirme o id da disciplina: "))
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"update disciplina " 
+                sql += f"set nomeDisciplina ='{self.nomeDisciplina}' where id_disciplina ='{self.id_disciplina}'"
+                c.executarDML(sql)
+                try:
+                    c = ConexaoDB()
+                    print('Dados alterados com sucesso!')
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+                    
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1- Alterar\n 2- finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                else:
+                    self.finalizar() # ir para a função de finalizar
+
+            elif escolha3 == 2:
+                # altera o nome do aluno
+                self.carga_horaria = input("Novo carga horária: ")
+                self.id_disciplina = int(input("confirme o id da disciplina: "))
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"update disciplina " 
+                sql += f"set carga_horaria ='{self.carga_horaria}' where id_disciplina ='{self.id_disciplina}'"
+                c.executarDML(sql)
+                try:
+                    c = ConexaoDB()
+                    print('Dados alterados com sucesso!')
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+                    
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1- Alterar\n 2- finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                else:
+                    self.finalizar() # ir para a função de finalizar
             # Disciplina
         elif escolha2 != 1 or escolha2 != 2 or escolha2 != 3 or escolha2 != 4: # define que se tiver um numero diferente desses
             print("\nNúmero errado! Digite um número dentro da escolha.\n")    # ele vai ser reenviado para o inicio da função alterar

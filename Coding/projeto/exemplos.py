@@ -18,8 +18,8 @@ class ConexaoDB():
         self.con.close()
 
     def executarDQL(self, sql): 
-        self.conectar()
-        self.cur.execute(sql)
+        )
+        self.cur.execute(sself.conectar(ql)
         resultado = self.cur.fetchall() #retornar todas as linhas
         self.desconectar()
         return print(resultado)
@@ -32,7 +32,7 @@ class ConexaoDB():
 
 
 
-##// exemplos soltos
+**// exemplos soltos
 
 from conexaoDB import ConexaoDB
 from User import User
