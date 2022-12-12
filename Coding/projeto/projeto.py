@@ -79,6 +79,8 @@ class senac: # criação de classe
                     sql = f"insert into professor (titulacao, area_formacao) " # define o que será feito na tabela funcionário
                     sql += f"values ('{self.titulacao}','{self.area_formacao}')" # nomeia os campos da tabela os quais os valores serão inseridos
                     c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                    print("Dados cadastrados com sucesso!")
+                    c.desconectar()
                 except Error as ex:
                     print('Erro de conexão:', ex)
 
@@ -98,6 +100,8 @@ class senac: # criação de classe
                     sql = f"insert into tec_administrativo (setor) " # define o que será feito na tabela funcionário
                     sql += f"values ('{self.setor}')" # nomeia os campos da tabela os quais os valores serão inseridos
                     c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                    print("Dados cadastrados com sucesso!")
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
 
@@ -122,7 +126,8 @@ class senac: # criação de classe
                 sql = f"insert into aluno (nome, matricula, CPF) " # define o que será feito na tabela funcionário 
                 sql += f"values ('{self.nome}','{self.matricula}','{self.CPF}')" # nomeia os campos da tabela os quais os valores serão inseridos
                 c.executarDML(sql) # comando que jogo os dados para o banco de dados
-                print('Dados inseridos com sucesso!')
+                print("Dados cadastrados com sucesso!")
+                c.desconectar()
             except SystemError as ex:
                 print('Erro de conexão:', ex)
                     
@@ -143,6 +148,7 @@ class senac: # criação de classe
                 sql = f"insert into curso (nomeCurso, duracao)" # define o que será feito na tabela funcionário
                 sql += f"values ('{self.nomeCurso}','{self.duracao}')" # nomeia os campos da tabela os quais os valores serão inseridos
                 c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                print("Dados cadastrados com sucesso!")
                 c.desconectar()
             except SystemError as ex:
                 print('Erro de conexão:', ex)
@@ -164,6 +170,8 @@ class senac: # criação de classe
                 sql = f"insert into disciplina (nomeDisciplina, carga_horaria)" # define o que será feito na tabela funcionário 
                 sql += f"values ('{self.nomeDisciplina}','{self.carga_horaria}')" # nomeia os campos da tabela os quais os valores serão inseridos
                 c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                print("Dados cadastrados com sucesso!")
+                c.desconectar()
             except SystemError as ex:
                 print('Erro de conexão:', ex)
                         
@@ -220,12 +228,12 @@ class senac: # criação de classe
             if escolha3 == 1:
                 print("insira o nome certo para confimação que deseja deletar seus dados")
                 self.nome = input("Nome: ")
-                c = ConexaoDB()
-                sql = f"delete from aluno where nome='{self.nome}'"
-                c.executarDML(sql)
                 try:
                     c = ConexaoDB()
+                    sql = f"delete from aluno where nome='{self.nome}'"
+                    c.executarDML(sql)
                     print('Dados excluidos com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -239,12 +247,12 @@ class senac: # criação de classe
             elif escolha3 == 2:
                 print("insira o nome certo para confimação que deseja deletar seus dados")
                 self.matricula = input("Matricula: ")
-                c = ConexaoDB()
-                sql = f"delete from aluno where matricula='{self.matricula}'"
-                c.executarDML(sql)
                 try:
                     c = ConexaoDB()
+                    sql = f"delete from aluno where matricula='{self.matricula}'"
+                    c.executarDML(sql)
                     print('Dados excluidos com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -259,12 +267,12 @@ class senac: # criação de classe
             elif escolha3 == 3:
                 print("insira o nome certo para confimação que deseja deletar seus dados")
                 self.CPF = input("CPF: ")
-                c = ConexaoDB()
-                sql = f"delete from aluno where CPF='{self.CPF}'"
-                c.executarDML(sql)
                 try:
                     c = ConexaoDB()
+                    sql = f"delete from aluno where CPF='{self.CPF}'"
+                    c.executarDML(sql)
                     print('Dados excluidos com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -287,40 +295,42 @@ class senac: # criação de classe
             print("Aqui você vai deletar os dados de curso")
             print("insira o nome certo para confimação que deseja deletar seus dados")
             self.nomeCurso = input("Nome do curso: ")
-            c = ConexaoDB()
-            sql = f"delete from curso where nomeCurso='{self.nomeCurso}'"
-            c.executarDML(sql)
             try:
                 c = ConexaoDB()
+                sql = f"delete from curso where nomeCurso='{self.nomeCurso}'"
+                c.executarDML(sql)
                 print('Dados excluidos com sucesso!')
+                c.desconectar()
             except SystemError as ex:
                 print('Erro de conexão:', ex)   
-                print("deseja excluir mais algum dado ?")
-                escolha4 = int(input("\n1- Deletar\n 2- finalizar o programa"))
-                if escolha4 == 1:
-                    self.deletar() # voltar para a função registrar
-                else:
-                    self.finalizar() # ir para a função de finalizar
+
+            print("deseja excluir mais algum dado ?")
+            escolha4 = int(input("\n1- Deletar\n 2- finalizar o programa"))
+            if escolha4 == 1:
+                self.deletar() # voltar para a função registrar
+            else:
+                self.finalizar() # ir para a função de finalizar
             # Curso 
         elif escolha2 == 4:
             #deletar curso
             print("Aqui você vai deletar os dados de Disciplina")
             print("insira o nome certo para confimação que deseja deletar seus dados")
             self.nomeDisciplina = input("Nome da Disciplina: ")
-            c = ConexaoDB()
-            sql = f"delete from disciplina where nomeDisciplina='{self.nomeDisciplina}'"
-            c.executarDML(sql)
             try:
                 c = ConexaoDB()
+                sql = f"delete from disciplina where nomeDisciplina='{self.nomeDisciplina}'"
+                c.executarDML(sql)
                 print('Dados excluidos com sucesso!')
+                c.desconectar()
             except SystemError as ex:
                 print('Erro de conexão:', ex)   
-                print("deseja excluir mais algum dado ?")
-                escolha4 = int(input("\n1- Deletar\n 2- finalizar o programa"))
-                if escolha4 == 1:
-                    self.deletar() # voltar para a função registrar
-                else:
-                    self.finalizar() # ir para a função de finalizar
+            
+            print("deseja excluir mais algum dado ?")
+            escolha4 = int(input("\n1- Deletar\n 2- finalizar o programa"))
+            if escolha4 == 1:
+                self.deletar() # voltar para a função registrar
+            else:
+                self.finalizar() # ir para a função de finalizar
             # Disciplina
         elif escolha2 != 1 or escolha2 != 2 or escolha2 != 3 or escolha2 != 4: # define que se tiver um numero diferente desses
             print("\nNúmero errado! Digite um número dentro da escolha.\n")    # ele vai ser reenviado para o inicio da função deletar
@@ -330,18 +340,70 @@ class senac: # criação de classe
 
     def alterar(self):
         print("Escolha uma das opções para alterar")
-        print("\n1 - Funcionários\n 2 - Aluno\n 3 - Curso\n 4 - Disciplina")
+        print("\n 1 - Funcionários\n 2 - Aluno\n 3 - Curso\n 4 - Disciplina")
         escolha2 = int(input("Escolha: ")) # escolha2 para dar acesso as condiçoes 
         
         if escolha2 == 1:
-            # entra em funcionarios para decidir qual seguir 
+            # entra em funcionarios para decidir qual seguir
+            print("Aqui vamos alterar um dado do aluno:")
+            print("O que você deseja alterar?\n 1 - Nome\n 2 - telefone\n 3 - salário\n 4 - endereço") 
+            escolha3 = int(input("Escolha: "))
+            if escolha3 == 1:
+                self.nome = input("digite um novo nome: ")
+                self.CPF = int(input("confime seu CPF: "))
+                try:
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update funcionario " 
+                    sql += f"set nome ='{self.nome}' where CPF='{self.CPF}'"
+                    c.executarDML(sql)
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+            elif escolha3 == 2:
+                self.telefone = input("digite um novo telefone: ")
+                self.CPF = int(input("confime seu CPF: "))
+                try:
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update funcionario " 
+                    sql += f"set telefone ='{self.nome}' where CPF='{self.CPF}'"
+                    c.executarDML(sql)
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+            elif escolha3 == 3:
+                self.salario = input("digite um novo salario: ")
+                self.CPF = int(input("confime seu CPF: "))
+                try:
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update funcionario " 
+                    sql += f"set salario ='{self.nome}' where CPF='{self.CPF}'"
+                    c.executarDML(sql)
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+            elif escolha3 == 4:
+                self.endereco = input("digite um novo endereço: ")
+                self.CPF = int(input("confime seu CPF: "))
+                try:
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update funcionario " 
+                    sql += f"set endereco ='{self.nome}' where CPF='{self.CPF}'"
+                    c.executarDML(sql)
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
+
             # seja professor ou Tec administrativo 
             print("agora defina qual tipo de funcionário: ")
-            print("1 - Profesor\n 2 - Técnico Administrativo")
-            escolha3 = int(input("Escolha: ")) # escolha3 para dar acesso as condições dentro de outro if
-            if escolha3 == 1:
+            print("1 - Profesor\n 2 - Técnico Administrativo\n 3 - voltar para o crud\n 4 - finalizar o programa ")
+            escolha4 = int(input("Escolha: ")) # escolha3 para dar acesso as condições dentro de outro if
+            if escolha4 == 1:
                 pass # entra em professor 
-            elif escolha3 == 2:
+            elif escolha4 == 2:
                 pass # entra em tec administrativo
             else:
                 print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
@@ -355,13 +417,13 @@ class senac: # criação de classe
                 # altera o nome do aluno
                 self.nome = input("novo nome: ")
                 self.CPF = int(input("confirme seu CPF: "))
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"update aluno " 
-                sql += f"set nome ='{self.nome}' where CPF='{self.CPF}'"
-                c.executarDML(sql)
                 try:
-                    c = ConexaoDB()
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update aluno " 
+                    sql += f"set nome ='{self.nome}' where CPF='{self.CPF}'"
+                    c.executarDML(sql)
                     print('Dados alterados com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -376,13 +438,13 @@ class senac: # criação de classe
                 # altera a matricula do aluno
                 self.nome = input("nova matricula: ")
                 self.CPF = int(input("confime seu CPF: "))
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"update aluno " 
-                sql += f"set matricula ='{self.nome}' where CPF='{self.CPF}'"
-                c.executarDML(sql)
                 try:
-                    c = ConexaoDB()
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update aluno " 
+                    sql += f"set matricula ='{self.nome}' where CPF='{self.CPF}'"
+                    c.executarDML(sql)
                     print('Dados alterados com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -409,13 +471,13 @@ class senac: # criação de classe
                 # altera o nome do curso
                 self.nomeCurso = input("Novo nome: ")
                 self.id_curso = int(input("confirme o id do curso: "))
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"update curso " 
-                sql += f"set nomeCurso ='{self.nomeCurso}' where id_curso='{self.id_curso}'"
-                c.executarDML(sql)
                 try:
-                    c = ConexaoDB()
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update curso " 
+                    sql += f"set nomeCurso ='{self.nomeCurso}' where id_curso='{self.id_curso}'"
+                    c.executarDML(sql)
                     print('Dados alterados com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -430,13 +492,13 @@ class senac: # criação de classe
                 # altera a duração do curso
                 self.duracao = input("Nova duração do curso: ")
                 self.id_curso = int(input("Confime o id do curso: "))
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"update curso " 
-                sql += f"set duracao ='{self.duracao}' where id_curso='{self.id_curso}'"
-                c.executarDML(sql)
                 try:
-                    c = ConexaoDB()
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update curso " 
+                    sql += f"set duracao ='{self.duracao}' where id_curso='{self.id_curso}'"
+                    c.executarDML(sql)
                     print('Dados alterados com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -462,13 +524,13 @@ class senac: # criação de classe
                 # altera o nome do aluno
                 self.nomeDisciplina = input("Novo nome da disciplina: ")
                 self.id_disciplina = int(input("confirme o id da disciplina: "))
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"update disciplina " 
-                sql += f"set nomeDisciplina ='{self.nomeDisciplina}' where id_disciplina ='{self.id_disciplina}'"
-                c.executarDML(sql)
                 try:
-                    c = ConexaoDB()
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update disciplina " 
+                    sql += f"set nomeDisciplina ='{self.nomeDisciplina}' where id_disciplina ='{self.id_disciplina}'"
+                    c.executarDML(sql)
                     print('Dados alterados com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -483,13 +545,13 @@ class senac: # criação de classe
                 # altera o nome do aluno
                 self.carga_horaria = input("Novo carga horária: ")
                 self.id_disciplina = int(input("confirme o id da disciplina: "))
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"update disciplina " 
-                sql += f"set carga_horaria ='{self.carga_horaria}' where id_disciplina ='{self.id_disciplina}'"
-                c.executarDML(sql)
                 try:
-                    c = ConexaoDB()
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update disciplina " 
+                    sql += f"set carga_horaria ='{self.carga_horaria}' where id_disciplina ='{self.id_disciplina}'"
+                    c.executarDML(sql)
                     print('Dados alterados com sucesso!')
+                    c.desconectar()
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
                     
@@ -509,31 +571,30 @@ class senac: # criação de classe
     def finalizar(self):
         print(">>>>>>>> obriagdo por usar nosso código <<<<<<<<<<<")
 
+    def menu(self):
+        print("\nEscolha uma das opções para acessá-la.\n")
+        print("1 - Mostrar\n2 - Cadastrar\n3 - Deletar\n4 - Alterar\n")  # escolha para adentrar ao crud e possibilitar as escolhas informadas
+        escolha1 = int(input("Escolha: "))
+        teste = senac() # escolha1 para ir dar acesso ao crud 
 
+        if escolha1 == 1:
+            teste.read()
+            # realizar consulta 
 
-print("\nEscolha uma das opções para acessá-la.\n")
-print("1 - Mostrar\n2 - Cadastrar\n3 - Deletar\n4 - Alterar\n")  # escolha para adentrar ao crud e possibilitar as escolhas informadas
-escolha1 = int(input("Escolha: "))
-teste = senac() # escolha1 para ir dar acesso ao crud 
+        elif escolha1 == 2:
+            teste.registrar()
+            # registrar 
 
-if escolha1 == 1:
-    teste.read()
-    # realizar consulta 
+        elif escolha1 == 3:
+            teste.deletar()
+            # deletar as informações 
 
-elif escolha1 == 2:
-    teste.registrar()
-    # registrar 
-elif escolha1 == 3:
-    teste.deletar()
-    # deletar as informações 
+        elif escolha1 == 4:
+            teste.alterar()
+            # alterar as informações
 
-elif escolha1 == 4:
-    teste.alterar()
-    # alterar as informações
+        else:
+            print("\nerro!")
 
-elif escolha1 != 1 or escolha1 != 2 or escolha1 != 3 or escolha1 != 4:
-    print("\nNúmero errado! Digite um número dentro da escolha.\n")
-    # caso seja diferente das escolhas o usuário é levado para a função de cadastrar
-    
-else:
-    print("\nerro!")
+object = senac()
+object.menu()
