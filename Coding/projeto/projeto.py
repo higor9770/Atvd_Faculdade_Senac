@@ -349,6 +349,7 @@ class senac: # criação de classe
             print("O que você deseja alterar?\n 1 - Nome\n 2 - telefone\n 3 - salário\n 4 - endereço") 
             escolha3 = int(input("Escolha: "))
             if escolha3 == 1:
+                # mudar o nome
                 self.nome = input("digite um novo nome: ")
                 self.CPF = int(input("confime seu CPF: "))
                 try:
@@ -361,6 +362,7 @@ class senac: # criação de classe
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
             elif escolha3 == 2:
+                # mudar o telefone
                 self.telefone = input("digite um novo telefone: ")
                 self.CPF = int(input("confime seu CPF: "))
                 try:
@@ -373,6 +375,7 @@ class senac: # criação de classe
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
             elif escolha3 == 3:
+                # mudar o salário
                 self.salario = input("digite um novo salario: ")
                 self.CPF = int(input("confime seu CPF: "))
                 try:
@@ -385,6 +388,7 @@ class senac: # criação de classe
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
             elif escolha3 == 4:
+                # mudar o endereço
                 self.endereco = input("digite um novo endereço: ")
                 self.CPF = int(input("confime seu CPF: "))
                 try:
@@ -398,16 +402,97 @@ class senac: # criação de classe
                     print('Erro de conexão:', ex)
 
             # seja professor ou Tec administrativo 
-            print("agora defina qual tipo de funcionário: ")
-            print("1 - Profesor\n 2 - Técnico Administrativo\n 3 - voltar para o crud\n 4 - finalizar o programa ")
+            print("Ainda deseja alterar mais alguma informação?  ")
+            print("1 - Profesor\n 2 - Técnico Administrativo\n 3 - voltar para o MENU\n 4 - finalizar o programa ")
             escolha4 = int(input("Escolha: ")) # escolha3 para dar acesso as condições dentro de outro if
             if escolha4 == 1:
-                pass # entra em professor 
+                # alterar professor
+                print("vamos alterar o dado do professor")
+                escolha5 = int(input("Qual dado do professor você quer alterar?\n 1 - Titulação\n 2 - Área de formação\n Escolha: "))
+                if escolha5 == 1:
+                    # alterar a titulação 
+                    self.titulacao = input("digite sua nova titulação: ")
+                    self.id_professor = int(input("confime seu ID: "))
+                    try:
+                        c = ConexaoDB() # faz a conexão com o banco 
+                        sql = f"update professor " 
+                        sql += f"set titulação ='{self.titulacao}' where id_professor='{self.id_professor}'"
+                        c.executarDML(sql)
+                        print("dados alterados com sucesso!")
+                        c.desconectar()
+                    except SystemError as ex:
+                        print('Erro de conexão:', ex)
+
+                    print("deseja alterar mais algum dado ?")
+                    escolha4 = int(input("\n1 - Alterar\n 2 - voltar ao Menu\n 3 - Finalizar o programa"))
+                    if escolha4 == 1:
+                        self.alterar() # voltar para a função alterar
+                    elif escolha4 == 2:
+                        self.menu()
+                    else:
+                        self.finalizar() # ir para a função de finalizar
+
+                elif escolha5 == 2:
+                    # alterar a área de formação
+                    self.area_formacao = input("digite sua nova área de formação: ")
+                    self.id_professor = int(input("confime seu ID: "))
+                    try:
+                        c = ConexaoDB() # faz a conexão com o banco 
+                        sql = f"update professor " 
+                        sql += f"set area_formacao ='{self.area_formacao}' where id_professor='{self.id_professor}'"
+                        c.executarDML(sql)
+                        print("dados alterados com sucesso!")
+                        c.desconectar()
+                    except SystemError as ex:
+                        print('Erro de conexão:', ex)
+
+                    print("deseja alterar mais algum dado ?")
+                    escolha4 = int(input("\n1- Alterar\n 2 - voltar ao Menu\n 3 - Finalizar o programa"))
+                    if escolha4 == 1:
+                        self.alterar() # voltar para a função alterar
+                    elif escolha4 == 2:
+                        self.menu() # voltar para o menu
+                    else:
+                        self.finalizar() # ir para a função de finalizar      
+                elif escolha5 != 1 or escolha5 != 2:
+                    print("A escolha foi diferente das opções dadas e devido isso te redirecionamos para o MENU.")
+                    self.menu() 
+                else:
+                    print(">>> ERRO <<<")
+
             elif escolha4 == 2:
-                pass # entra em tec administrativo
+                # alterar Técnico Administrativo
+                print("vamos alterar o setor do tecnico administrativo!")
+                self.setor = input("digite o novo setor: ")
+                self.id_tec_adminstrativo = int(input("confime seu ID: "))
+                try:
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"update tec_administrativo " 
+                    sql += f"set setor ='{self.setor}' where id_tecnico_administrativo='{self.id_tec_adminstrativo}'"
+                    c.executarDML(sql)
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                        print('Erro de conexão:', ex)
+                print("deseja alterar mais algum dado ?")
+                escolha4 = int(input("\n1 - Alterar\n 2 - voltar ao Menu\n 3 - Finalizar o programa"))
+                if escolha4 == 1:
+                    self.alterar() # voltar para a função alterar
+                elif escolha4 == 2:
+                    self.menu()
+                else:
+                    self.finalizar() # ir para a função de finalizar
+
+            elif escolha4 == 3:
+                # voltar para o Menu
+                self.menu()
+            elif escolha4 == 4:
+                #finalizar o programa
+                self.finalizar()
             else:
-                print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
-                self.alterar()       # e vai para o inicio da função read
+                print(">>> ERRO! <<<")
+                print("Após o erro te redirecionamos ao menu!")   
+                self.menu()   
 
         elif escolha2 == 2:
             print("Aqui vamos alterar um dado do aluno:")

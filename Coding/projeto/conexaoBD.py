@@ -1,4 +1,4 @@
-import mysql.connector
+import mysql.connector 
 
 class ConexaoDB():
     def __init__(self, host="localhost", user="root", password="teste", database = "crud_python"):
