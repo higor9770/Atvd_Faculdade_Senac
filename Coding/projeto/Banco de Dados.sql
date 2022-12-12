@@ -46,3 +46,5 @@ select * from aluno;
 select * from curso;
 select * from disciplina;
 select * from funcionarios;
+select * from professor;
+select * from tec_administrativo;
