@@ -1,39 +1,12 @@
-from conexaoBD import ConexaoDB 
-from tkinter import messagebox
+from conexaoBD import ConexaoDB
+from mysql.connector import Error
 
 
 class senac: # criação de classe 
 
     def __init__(self):
-        
-        print("\nEscolha uma das opções para acessá-la.\n")
-        print("1 - Mostrar\n2 - Cadastrar\n3 - Deletar\n4 - Alterar\n")  # escolha para adentrar ao crud e possibilitar as escolhas informadas
-        escolha1 = int(input("Escolha: ")) # escolha1 para ir dar acesso ao crud 
-
-        if escolha1 == 1:
-            self.read()
-            # realizar consulta 
-       
-        elif escolha1 == 2:
-            self.registrar()
-            # registrar 
-        elif escolha1 == 3:
-            self.deletar()
-            # deletar as informações 
-
-        elif escolha1 == 4:
-            self.alterar()
-            # alterar as informações
-
-        elif escolha1 != 1 or escolha1 != 2 or escolha1 != 3 or escolha1 != 4:
-            print("\nNúmero errado! Digite um número dentro da escolha.\n")
-            self.__init__()
-            # caso seja diferente das escolhas o usuário é levado para a função de cadastrar
-            
-        else:
-            print("\nerro!")
-
-
+        pass 
+    
     def read(self):
         print("Escolha uma das opções para visualizar")
         print("\n 1 - Funcionários\n 2 - Aluno\n 3 - Curso\n 4 - Disciplina")
@@ -84,10 +57,14 @@ class senac: # criação de classe
             self.telefone = input("Telefone: ")
             self.salario = int(input("Salário: "))
             self.endereco = input("Endereço: ")
-            c = ConexaoDB() # faz a conexão com o banco 
-            sql = f"insert into funcionarios (nome, CPF, telefone, salario, endereco) " # define o que será feito na tabela funcionário
-            sql += f"values ('{self.nome}','{self.CPF}','{self.telefone}','{self.salario}','{self.endereco}')" # nomeia os campos da tabela os quais os valores serão inseridos
-            c.executarDML(sql) # comando que jogo os dados para o banco de dados
+            try:
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"insert into funcionarios (nome, CPF, telefone, salario, endereco) " # define o que será feito na tabela funcionário
+                sql += f"values ('{self.nome}','{self.CPF}','{self.telefone}','{self.salario}','{self.endereco}')" # nomeia os campos da tabela os quais os valores serão inseridos
+                c.executarDML(sql) # comando que jogo os dados para o banco de dados
+            except Error as ex:
+                print('Erro de conexão:', ex)
+
 
             print("Agora especifique qual a ocupação desse novo funcionário: ")
             print("1 - Profesor\n 2 - Técnico Administrativo")
@@ -97,16 +74,14 @@ class senac: # criação de classe
                 print("\nPor favor, insira as informações corretamente.\n")
                 self.titulacao = input("Titulação: ")
                 self.area_formacao = input("\nÁrea de Formação:  ")
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"insert into professor (titulacao, area_formacao) " # define o que será feito na tabela funcionário
-                sql += f"values ('{self.titulacao}','{self.area_formacao}')" # nomeia os campos da tabela os quais os valores serão inseridos
-                c.executarDML(sql) # comando que jogo os dados para o banco de dados
                 try:
-                    c = ConexaoDB()
-                    print('Dados inseridos com sucesso!')
-                except SystemError as ex:
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"insert into professor (titulacao, area_formacao) " # define o que será feito na tabela funcionário
+                    sql += f"values ('{self.titulacao}','{self.area_formacao}')" # nomeia os campos da tabela os quais os valores serão inseridos
+                    c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                except Error as ex:
                     print('Erro de conexão:', ex)
-                    
+
                 print("deseja adicionar mais algum funcionário ?")
                 escolha4 = int(input("\n1- Adicionar\n 2- finalizar o programa"))
                 if escolha4 == 1:
@@ -118,13 +93,11 @@ class senac: # criação de classe
                 # cadastrando especificações do tecnico admnistrativo
                 print("Por favor, insira as informações corretamente.\n")
                 self.setor = input("setor: ")
-                c = ConexaoDB() # faz a conexão com o banco 
-                sql = f"insert into tec_administrativo (setor) " # define o que será feito na tabela funcionário
-                sql += f"values ('{self.setor}')" # nomeia os campos da tabela os quais os valores serão inseridos
-                c.executarDML(sql) # comando que jogo os dados para o banco de dados
                 try:
-                    c = ConexaoDB()
-                    print('Dados inseridos com sucesso!')
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"insert into tec_administrativo (setor) " # define o que será feito na tabela funcionário
+                    sql += f"values ('{self.setor}')" # nomeia os campos da tabela os quais os valores serão inseridos
+                    c.executarDML(sql) # comando que jogo os dados para o banco de dados
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
 
@@ -144,12 +117,11 @@ class senac: # criação de classe
             self.nome = input("Nome do aluno: ")
             self.matricula = int(input("matricula:  "))
             self.CPF = int(input("CPF do aluno: "))
-            c = ConexaoDB() # faz a conexão com o banco 
-            sql = f"insert into aluno (nome, matricula, CPF) " # define o que será feito na tabela funcionário 
-            sql += f"values ('{self.nome}','{self.matricula}','{self.CPF}')" # nomeia os campos da tabela os quais os valores serão inseridos
-            c.executarDML(sql) # comando que jogo os dados para o banco de dados
             try:
-                c = ConexaoDB()
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"insert into aluno (nome, matricula, CPF) " # define o que será feito na tabela funcionário 
+                sql += f"values ('{self.nome}','{self.matricula}','{self.CPF}')" # nomeia os campos da tabela os quais os valores serão inseridos
+                c.executarDML(sql) # comando que jogo os dados para o banco de dados
                 print('Dados inseridos com sucesso!')
             except SystemError as ex:
                 print('Erro de conexão:', ex)
@@ -165,14 +137,13 @@ class senac: # criação de classe
             # cadastrar curso
             print("Você iniciou um novo cadastro de Curso! Por favor, insira as informações corretamente.")
             self.nomeCurso = input("Nome do curso: ")
-            self.duracao = int(input("Duração em horas:  ")) 
-            c = ConexaoDB() # faz a conexão com o banco 
-            sql = f"insert into curso (nomeCurso, duracao)" # define o que será feito na tabela funcionário
-            sql += f"values ('{self.nomeCurso}','{self.duracao}')" # nomeia os campos da tabela os quais os valores serão inseridos
-            c.executarDML(sql) # comando que jogo os dados para o banco de dados
-            try:
-                c = ConexaoDB()
-                print('Dados inseridos com sucesso!')
+            self.duracao = int(input("Duração em horas:  "))
+            try: 
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"insert into curso (nomeCurso, duracao)" # define o que será feito na tabela funcionário
+                sql += f"values ('{self.nomeCurso}','{self.duracao}')" # nomeia os campos da tabela os quais os valores serão inseridos
+                c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                c.desconectar()
             except SystemError as ex:
                 print('Erro de conexão:', ex)
                     
@@ -188,13 +159,11 @@ class senac: # criação de classe
             print("Você iniciou um novo cadastro de Disciplina! Por favor, insira as informações corretamente.")
             self.nomeDisciplina = input("Nome da Disciplina: ")
             self.carga_horaria = int(input("Duração em horas:  ")) 
-            c = ConexaoDB() # faz a conexão com o banco 
-            sql = f"insert into disciplina (nomeDisciplina, carga_horaria)" # define o que será feito na tabela funcionário 
-            sql += f"values ('{self.nomeDisciplina}','{self.carga_horaria}')" # nomeia os campos da tabela os quais os valores serão inseridos
-            c.executarDML(sql) # comando que jogo os dados para o banco de dados
             try:
-                c = ConexaoDB()
-                print('Dados inseridos com sucesso!')
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"insert into disciplina (nomeDisciplina, carga_horaria)" # define o que será feito na tabela funcionário 
+                sql += f"values ('{self.nomeDisciplina}','{self.carga_horaria}')" # nomeia os campos da tabela os quais os valores serão inseridos
+                c.executarDML(sql) # comando que jogo os dados para o banco de dados
             except SystemError as ex:
                 print('Erro de conexão:', ex)
                         
@@ -540,9 +509,31 @@ class senac: # criação de classe
     def finalizar(self):
         print(">>>>>>>> obriagdo por usar nosso código <<<<<<<<<<<")
 
-object = senac()
-object.read()
-object.registrar()
-object.deletar()
-object.alterar()
-object.finalizar()
+
+
+print("\nEscolha uma das opções para acessá-la.\n")
+print("1 - Mostrar\n2 - Cadastrar\n3 - Deletar\n4 - Alterar\n")  # escolha para adentrar ao crud e possibilitar as escolhas informadas
+escolha1 = int(input("Escolha: "))
+teste = senac() # escolha1 para ir dar acesso ao crud 
+
+if escolha1 == 1:
+    teste.read()
+    # realizar consulta 
+
+elif escolha1 == 2:
+    teste.registrar()
+    # registrar 
+elif escolha1 == 3:
+    teste.deletar()
+    # deletar as informações 
+
+elif escolha1 == 4:
+    teste.alterar()
+    # alterar as informações
+
+elif escolha1 != 1 or escolha1 != 2 or escolha1 != 3 or escolha1 != 4:
+    print("\nNúmero errado! Digite um número dentro da escolha.\n")
+    # caso seja diferente das escolhas o usuário é levado para a função de cadastrar
+    
+else:
+    print("\nerro!")
