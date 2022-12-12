@@ -128,6 +128,7 @@ class senac: # criação de classe
                 except SystemError as ex:
                     print('Erro de conexão:', ex)
 
+                print("deseja adicionar mais algum funcionário ?")
                 escolha4 = int(input("\n1- Adicionar\n 2- finalizar o programa"))
                 if escolha4 == 1:
                     self.registrar() # voltar para a função registrar
@@ -147,6 +148,18 @@ class senac: # criação de classe
             sql = f"insert into aluno (nome, matricula, CPF) " # define o que será feito na tabela funcionário 
             sql += f"values ('{self.nome}','{self.matricula}','{self.CPF}')" # nomeia os campos da tabela os quais os valores serão inseridos
             c.executarDML(sql) # comando que jogo os dados para o banco de dados
+            try:
+                c = ConexaoDB()
+                print('Dados inseridos com sucesso!')
+            except SystemError as ex:
+                print('Erro de conexão:', ex)
+                    
+            print("deseja adicionar mais algum aluno ?")
+            escolha4 = int(input("\n1- Adicionar\n 2- finalizar o programa"))
+            if escolha4 == 1:
+                self.registrar() # voltar para a função registrar
+            else:
+                self.finalizar() # ir para a função de finalizar
 
         elif escolha2 == 3:
             # cadastrar curso
@@ -157,6 +170,18 @@ class senac: # criação de classe
             sql = f"insert into curso (nomeCurso, duracao)" # define o que será feito na tabela funcionário
             sql += f"values ('{self.nomeCurso}','{self.duracao}')" # nomeia os campos da tabela os quais os valores serão inseridos
             c.executarDML(sql) # comando que jogo os dados para o banco de dados
+            try:
+                c = ConexaoDB()
+                print('Dados inseridos com sucesso!')
+            except SystemError as ex:
+                print('Erro de conexão:', ex)
+                    
+            print("deseja adicionar mais algum curso ?")
+            escolha4 = int(input("\n1- Adicionar\n 2- finalizar o programa"))
+            if escolha4 == 1:
+                self.registrar() # voltar para a função registrar
+            else:
+                self.finalizar() # ir para a função de finalizar
 
         elif escolha2 == 4:
             # cadastrar Disciplina
@@ -167,6 +192,18 @@ class senac: # criação de classe
             sql = f"insert into disciplina (nomeDisciplina, carga_horaria)" # define o que será feito na tabela funcionário 
             sql += f"values ('{self.nomeDisciplina}','{self.carga_horaria}')" # nomeia os campos da tabela os quais os valores serão inseridos
             c.executarDML(sql) # comando que jogo os dados para o banco de dados
+            try:
+                c = ConexaoDB()
+                print('Dados inseridos com sucesso!')
+            except SystemError as ex:
+                print('Erro de conexão:', ex)
+                        
+            print("deseja adicionar mais algum disciplina ?")
+            escolha4 = int(input("\n1- Adicionar\n 2- finalizar o programa"))
+            if escolha4 == 1:
+                self.registrar() # voltar para a função registrar
+            else:
+                self.finalizar() # ir para a função de finalizar
 
         elif escolha2 != 1 or escolha2 != 2 or escolha2 != 3 or escolha2 != 4: # define que se tiver um numero diferente desses
             print("\nNúmero errado! Digite um número dentro da escolha.\n")    # ele vai ser reenviado para o inicio da função registrar
