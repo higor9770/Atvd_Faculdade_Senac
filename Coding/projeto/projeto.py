@@ -27,7 +27,18 @@ class senac: # criação de classe
                 self.read()          # e vai para o inicio da função read´         
             # funcionário
         elif escolha2 == 2:
-            pass 
+            print("aqui você vai visualizar todos os dados cadastrados do aluno a partir do CPF")
+            self.CPF = input("Digite o CPF do aluno: ")
+            try:
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"select * from aluno where CPF='{self.CPF}'" # define o que será feito na tabela funcionário
+                c.executarDQL(sql) # comando que jogo os dados para o banco de dados
+                print("Esses são os dados dos aluno!")
+                c.desconectar()
+            except SystemError as ex:
+                print('Erro de conexão:', ex)
+
+
             # aluno
         elif escolha2 == 3:
             pass
@@ -198,24 +209,42 @@ class senac: # criação de classe
             print("Aqui você vai deletar as informações dos funcionários")
             print("insira o CPF do funcionário certo para confimação que deseja deletar os dados do funcionário")
             self.CPF = input("CPF: ")
-            c = ConexaoDB() # faz a conexão com o banco 
-            sql = f"delete from funcionario where CPF='{self.CPF}'" # define o que será feito na tabela funcionário
-            c.executarDML(sql) # comando que jogo os dados para o banco de dados
-            print("deseja excluir mais algum dado ?")
-            escolha4 = int(input("\n1- Deletar\n 2- finalizar o programa"))
-            if escolha4 == 1:
-                self.deletar() # voltar para a função registrar
-            else:
-                self.finalizar() # ir para a função de finalizar
+            try:
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"delete from funcionario where CPF='{self.CPF}'" # define o que será feito na tabela funcionário
+                c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                print("dados alterados com sucesso!")
+                c.desconectar()
+            except SystemError as ex:
+                print('Erro de conexão:', ex)
+
             # entra em funcionarios para decidir qual seguir 
             # seja professor ou Tec administrativo 
-            print("agora defina qual tipo de funcionário: ")
+            print("agora vamos deletar as espeficações desse funcionário: ")
             print("1 - Profesor\n 2 - Técnico Administrativo")
             escolha3 = int(input("Escolha: ")) # escolha3 para dar acesso as condições dentro de outro if
             if escolha3 == 1:
-                pass  # entra em professor 
+                try:
+                    print("insira o Id do funcionário certo para confimação que deseja deletar as especificações do professor")
+                    self.id_professor = int(input("digite o id do professor: "))
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"delete from professor where id_professor='{self.id_professor}'" # define o que será feito na tabela funcionário
+                    c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
             elif escolha3 == 2:
-                pass # entra em tec administrativo
+                try:
+                    print("insira o Id do funcionário certo para confimação que deseja deletar as especificações do técnico administrativo")
+                    self.id_tec_adminstrativo = int(input("digite o id do técnico administrativo: "))
+                    c = ConexaoDB() # faz a conexão com o banco 
+                    sql = f"delete from tec_administrativo where id_tec_administrativo ='{self.id_tec_adminstrativo}'" # define o que será feito na tabela funcionário
+                    c.executarDML(sql) # comando que jogo os dados para o banco de dados
+                    print("dados alterados com sucesso!")
+                    c.desconectar()
+                except SystemError as ex:
+                    print('Erro de conexão:', ex)
             else:
                 print("\n\n\nerro!") # casso for um número diferente de 1 ou 2 printa o erro e 
                 self.deletar()          # e vai para o inicio da função read 
@@ -312,7 +341,7 @@ class senac: # criação de classe
                 self.finalizar() # ir para a função de finalizar
             # Curso 
         elif escolha2 == 4:
-            #deletar curso
+            #deletar disciplina
             print("Aqui você vai deletar os dados de Disciplina")
             print("insira o nome certo para confimação que deseja deletar seus dados")
             self.nomeDisciplina = input("Nome da Disciplina: ")
