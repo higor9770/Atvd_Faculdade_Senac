@@ -32,19 +32,66 @@ class senac: # criação de classe
             try:
                 c = ConexaoDB() # faz a conexão com o banco 
                 sql = f"select * from aluno where CPF='{self.CPF}'" # define o que será feito na tabela funcionário
-                c.executarDQL(sql) # comando que jogo os dados para o banco de dados
-                print("Esses são os dados dos aluno!")
-                c.desconectar()
-            except SystemError as ex:
+                if c.executarDQL(sql) is None:
+                    print("o banco está vazio")
+                else:
+                    print("tem dado aqui")
+            except Error as ex:
                 print('Erro de conexão:', ex)
 
+            print("deseja visualizar mais algum dado ?")
+            escolha3 = int(input("\n1- visualizar\n2- voltar ao menu\n3- finalizar o programa\n escolha: "))
+            if escolha3 == 1:
+                self.read() # voltar para a função registrar
+            elif escolha3 == 2:
+                self.menu()
+            else:
+                self.finalizar() # ir para a função de finalizar
 
             # aluno
         elif escolha2 == 3:
-            pass
+            print("aqui você vai visualizar todos os dados cadastrados a partir do nome do curso")
+            self.nomeCurso = input("Digite o nome do curso: ")
+            try:
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"select * from curso where nomeCurso='{self.nomeCurso}'" # define o que será feito na tabela funcionário
+                c.executarDQL(sql) # comando que jogo os dados para o banco de dados
+                print("Esses são os dados do curso!")
+                c.desconectar()
+            except Error as ex:
+                print('Erro de conexão:', ex)
+
+            print("deseja visualizar mais algum dado ?")
+            escolha3 = int(input("\n1- visualizar\n2- voltar ao menu\n3- finalizar o programa\n escolha: "))
+            if escolha3 == 1:
+                self.read() # voltar para a função registrar
+            elif escolha3 == 2:
+                self.menu()
+            else:
+                self.finalizar() # ir para a função de finalizar
+
             # Curso 
         elif escolha2 == 4:
-            pass
+            print("aqui você vai visualizar todos os dados cadastrados a partir do nome da disciplina")
+            self.nomeDisciplina = input("Digite o nome da disciplina: ")
+            try:
+                c = ConexaoDB() # faz a conexão com o banco 
+                sql = f"select * from disciplina where nomeDisciplina='{self.nomeDisciplina}'" # define o que será feito na tabela funcionário
+                c.executarDQL(sql) # comando que jogo os dados para o banco de dados
+                print("Esses são os dados da disciplina!")
+                c.desconectar()
+            except Error as ex:
+                print('Erro de conexão:', ex)
+
+            print("deseja visualizar mais algum dado ?")
+            escolha3 = int(input("\n1- visualizar\n2- voltar ao menu\n3- finalizar o programa\n escolha: "))
+            if escolha3 == 1:
+                self.read() # voltar para a função registrar
+            elif escolha3 == 2:
+                self.menu()
+            else:
+                self.finalizar() # ir para a função de finalizar
+
             # Disciplina
         elif escolha2 != 1 or escolha2 != 2 or escolha2 != 3 or escolha2 != 4: # define que se tiver um numero diferente desses
             print("\nNúmero errado! Digite um número dentro da escolha.\n")    # ele vai ser reenviado para o inicio da função read
